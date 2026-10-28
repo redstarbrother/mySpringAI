@@ -1,0 +1,15 @@
+
+spring:
+  application:
+    name: ai-demo
+  ai:
+    openai:
+      base-url: https://api.deepseek.com
+      api-key: sk-5a1ceb64f9f44742923da14cd1a09e60
+      chat:
+        options:
+          model: deepseek-flash
+          temperature: 0.7
+
+server:
+  port: 8090
