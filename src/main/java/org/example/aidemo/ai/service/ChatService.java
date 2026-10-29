@@ -1,6 +1,7 @@
 package org.example.aidemo.ai.service;
 
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.prompt.ChatOptions;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
@@ -46,6 +47,16 @@ public class ChatService {
                 .user(user -> user.text(dsu)
                         .param("style", style)
                         .param("document", document))
+                .call()
+                .content();
+    }
+
+    public String customOptions(String msg) {
+        return chatClient.prompt()
+                .user("this is user message")
+                .options(ChatOptions.builder()
+                        .temperature(0.2)
+                        .maxTokens(1000).build())
                 .call()
                 .content();
     }
